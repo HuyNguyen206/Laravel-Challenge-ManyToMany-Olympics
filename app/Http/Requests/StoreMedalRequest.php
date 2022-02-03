@@ -25,14 +25,23 @@ class StoreMedalRequest extends FormRequest
      */
     public function rules()
     {
-        $sports = Sport::all(['id'])->pluck('id')->toArray();
-        $positions = ['first', 'second', 'third'];
-        foreach ($sports as $sportId) {
-            foreach ($positions as $position) {
-                $validationRule["{$position}_$sportId"] =  $position === 'first' ? ['required', new CheckCountryAward()] : 'required';
-            }
-        }
-//        dd($validationRule);
+        return [
+            'sports.*.*' => 'required'
+        ];
+//        $sports = Sport::all(['id'])->pluck('id')->toArray();
+//        $positions = ['first', 'second', 'third'];
+//        foreach ($sports as $sportId) {
+//            foreach ($positions as $position) {
+//                $validationRule["{$position}_$sportId"] =  $position === 'first' ? ['required', new CheckCountryAward()] : 'required';
+//            }
+//        }
         return $validationRule ?? [];
+    }
+
+    public function messages()
+    {
+        return [
+            'sports.*.*.required' => 'Please select country'
+        ];
     }
 }

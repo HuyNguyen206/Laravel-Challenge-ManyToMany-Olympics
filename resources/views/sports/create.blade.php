@@ -19,14 +19,14 @@
                                     <label for="first" class="col-md-4 col-form-label text-md-right">1st place:</label>
 
                                     <div class="col-md-6">
-                                        <select name="first_{{$sport->id}}"
-                                                class="form-control @error("first_$sport->id") is-invalid @enderror">
-                                            <option disabled>-- choose country --</option>
+                                        <select name="sports[{{$sport->id}}][0]"
+                                                class="form-control @error("sports.{$sport->id}.0") is-invalid @enderror">
+                                            <option value="">-- choose country --</option>
                                             @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                <option @if(old("sports.{$sport->id}.0") == $country->id) selected @endif value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
                                         </select>
-                                        @error("first_$sport->id")
+                                        @error("sports.{$sport->id}.0")
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -38,14 +38,14 @@
                                     <label for="second" class="col-md-4 col-form-label text-md-right">2nd place:</label>
 
                                     <div class="col-md-6">
-                                        <select name="second_{{$sport->id}}" id="second"
-                                                class="form-control @error("second_$sport->id") is-invalid @enderror">
-                                            <option disabled>-- choose country --</option>
+                                        <select name="sports[{{$sport->id}}][1]" id="second"
+                                                class="form-control @error("sports.$sport->id.1") is-invalid @enderror">
+                                            <option value="">-- choose country --</option>
                                             @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                <option @if(old("sports.{$sport->id}.1") == $country->id) selected @endif value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
                                         </select>
-                                        @error("second_$sport->id")
+                                        @error("sports.$sport->id.1")
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -57,14 +57,14 @@
                                     <label for="third" class="col-md-4 col-form-label text-md-right">3rd place:</label>
 
                                     <div class="col-md-6">
-                                        <select name="third_{{$sport->id}}" id="third"
-                                                class="form-control @error("third_$sport->id") is-invalid @enderror">
-                                            <option disabled>-- choose country --</option>
+                                        <select name="sports[{{$sport->id}}][2]" id="third"
+                                                class="form-control @error("sports.$sport->id.2") is-invalid @enderror">
+                                            <option value="">-- choose country --</option>
                                             @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                <option @if(old("sports.{$sport->id}.2") == $country->id) selected @endif value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
                                         </select>
-                                        @error("third_$sport->id")
+                                        @error("sports.$sport->id.2")
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
