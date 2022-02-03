@@ -18,36 +18,20 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @forelse($countries as $country)
                                 <tr>
-                                    <th>United States of America</th>
-                                    <td>39</td>
-                                    <td>41</td>
-                                    <td>33</td>
+                                    <td>{{$country->name}}</td>
+                                    <td>{{$country->firstCount}}</td>
+                                    <td>{{$country->secondCount}}</td>
+                                    <td>{{$country->thirdCount}}</td>
                                 </tr>
+                            @empty
                                 <tr>
-                                    <th>France</th>
-                                    <td>10</td>
-                                    <td>12</td>
-                                    <td>14</td>
+                                    <td colspan="4">No data</td>
                                 </tr>
-                                <tr>
-                                    <th>Germany</th>
-                                    <td>10</td>
-                                    <td>11</td>
-                                    <td>16</td>
-                                </tr>
-                                <tr>
-                                    <th>Poland</th>
-                                    <td>4</td>
-                                    <td>5</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <th>Norway</th>
-                                    <td>4</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                </tr>
+                            @endforelse
+
+
                             </tbody>
                         </table>
                     </div>
